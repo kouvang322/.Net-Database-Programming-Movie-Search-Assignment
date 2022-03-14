@@ -8,13 +8,12 @@ namespace MovieLibraryAssignment
 {
     public interface IListItemService
     {
-        void List();
+        //void List();
 
-        void DisplayMenu();
+        //void DisplayMenu();
 
-        void Write();
 
-        string AddCorrectStringFormat(UInt64 movieID, string movieTitle, string moviegenres);
+        //string AddCorrectStringFormat(UInt64 movieID, string movieTitle, string moviegenres);
 
         // Tried as a test
         //string ensureChoiceIsEitherYesOrNO();

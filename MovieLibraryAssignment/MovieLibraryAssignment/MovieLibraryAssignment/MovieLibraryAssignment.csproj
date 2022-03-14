@@ -13,10 +13,14 @@
 
   <ItemGroup>
     <None Remove="MovieFile\movies -small.csv" />
+    <None Remove="MovieFile\Movies.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="MovieFile\movies.csv">
+    <EmbeddedResource Include="MovieFile\Movies.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieFile\Movies.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -24,6 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
