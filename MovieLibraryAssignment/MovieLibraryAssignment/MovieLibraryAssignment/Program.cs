@@ -17,8 +17,8 @@ namespace MovieLibraryAssignment
                 {
                     var startup = new Startup();
                     var serviceProvider = startup.ConfigureServices();
-                    //var service = serviceProvider.GetService<IListItemService>();
-                    var service = serviceProvider.GetService<IFileHandler>();
+                    var service = serviceProvider.GetService<IListItemService>();
+                    //var service = serviceProvider.GetService<IFileHandler>();
 
                     service?.DisplayMenu();
                     

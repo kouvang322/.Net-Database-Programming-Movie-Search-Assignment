@@ -1,0 +1,90 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MovieLibraryAssignment
+{
+    public class Movielist
+    {
+        List<Movie> movies = new List<Movie>();
+
+
+        public void ReadMovieFromFile()
+        {
+            string file = "MediaTypes\\Movies-small.csv";
+            StreamReader fileReader = new StreamReader(file);
+            string line = fileReader.ReadLine();
+
+            if (File.Exists(file))
+            {
+                // read data from file
+
+                try
+                {
+                    while (!fileReader.EndOfStream)
+                    {
+                        Movie movie = new Movie();
+
+                        line = fileReader.ReadLine();
+                        int idx = line.IndexOf('"');
+
+                        if (idx == -1)
+                        {
+                            string[] movieInfo = line.Split(",");
+
+                            movie.ID = (int.Parse(movieInfo[0]));
+
+                            movie.Title = (movieInfo[1]);
+
+                            string genresSeparate = movieInfo[2];
+
+                            movie.Genres = genresSeparate.Split("|");
+
+                        }
+                        else
+                        {
+                            movie.ID = (int.Parse(line.Substring(0, idx - 1)));
+
+                            line = line.Substring(idx + 1);
+
+                            idx = line.IndexOf('"');
+
+                            movie.Title = (line.Substring(0, idx + 2));
+
+                            string genreSeparate = line;
+
+                            movie.Genres = genreSeparate.Split("|");
+                        }
+
+                        movies.Add(movie);
+                    }
+
+                    fileReader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                Console.WriteLine("File does not exist");
+            }
+
+
+        }
+
+        public void DisplayMovies()
+        {
+            foreach (var movie in movies)
+            {
+                movie.Display();
+
+            }
+        }
+
+    }
+}

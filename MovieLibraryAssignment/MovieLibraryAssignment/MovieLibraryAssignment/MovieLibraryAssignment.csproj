@@ -12,15 +12,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="MediaTypes\Movies-small.csv" />
+    <None Remove="MediaTypes\Shows.csv" />
+    <None Remove="MediaTypes\Videos.csv" />
     <None Remove="MovieFile\movies -small.csv" />
     <None Remove="MovieFile\Movies.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="MovieFile\Movies.csv">
+    <EmbeddedResource Include="MediaTypes\Movies-small.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="MovieFile\Movies.json">
+    <EmbeddedResource Include="MediaTypes\Shows.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MediaTypes\Videos.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieFile\Movies.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

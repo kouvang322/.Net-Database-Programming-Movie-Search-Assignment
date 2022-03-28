@@ -10,8 +10,9 @@ namespace MovieLibraryAssignment
     {
         //void List();
 
-        //void DisplayMenu();
+        void DisplayMenu();
 
+        //void Write();
 
         //string AddCorrectStringFormat(UInt64 movieID, string movieTitle, string moviegenres);
 

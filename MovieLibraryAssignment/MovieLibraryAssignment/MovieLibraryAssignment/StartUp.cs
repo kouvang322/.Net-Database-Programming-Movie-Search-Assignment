@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MovieLibraryAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +15,14 @@ namespace MovieLibraryAssignment
             IServiceCollection services = new ServiceCollection();
 
             services.AddLogging(builder =>
-                {
-                    builder.AddConsole();
-                });
+            {
+                builder.AddConsole();
+            });
 
             // Add new lines of code here to register any interfaces and concrete services you create
-            //services.AddTransient<IListItemService, ListItemService>();
-            services.AddTransient<IFileHandler, JsonFileHandler>();
-            
+            services.AddTransient<IListItemService, ListItemService>();
+
             return services.BuildServiceProvider();
         }
     }
 }
-

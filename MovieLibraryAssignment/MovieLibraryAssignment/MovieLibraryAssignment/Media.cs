@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MovieLibraryAssignment
 {
-    public interface IFileHandler
+    public abstract class Media
     {
-        void DisplayMenu();
+        public int ID { get; set; }
+        public string Title { get; set; }
 
-        public void Read(string json);
-
-        public string Write();
+        public abstract void Display();
     }
 }

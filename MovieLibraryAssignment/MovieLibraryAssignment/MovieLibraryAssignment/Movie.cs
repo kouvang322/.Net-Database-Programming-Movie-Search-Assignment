@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace MovieLibraryAssignment
 {
-    internal class Movie
+    class Movie : Media
     {
-        public ulong ID { get; set; }
 
-        public string Title { get; set; }
+        public string[] Genres { get; set; }
 
-        public string Genres { get; set; }
+        public override void Display()
+        {
+
+           Console.WriteLine($"ID: {ID}, Title: {Title}, Genre(s): {string.Join(", ", Genres)}");
+           
+        }
     }
 }
