@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MovieLibraryAssignment.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,27 +44,41 @@ namespace MovieLibraryAssignment
             {
                 // Ask user what they want to do
                 Console.WriteLine();
-                Console.WriteLine("1. Display Movies");
-                Console.WriteLine("2. Display Shows");
-                Console.WriteLine("3. Display Videos");
+                Console.WriteLine("1. Search Title");
+                Console.WriteLine("2. Display Movies");
+                Console.WriteLine("3. Display Shows");
+                Console.WriteLine("4. Display Videos");
                 Console.WriteLine("Enter any other key to exit.");
                 //  user input
                 userChoice = Console.ReadLine();
                 _logger.LogInformation("User choice: {choice}", userChoice);
 
                 if (userChoice == "1")
+                {
                     try
                     {
-                        Movielist movieList = new Movielist();
-                        movieList.ReadMovieFromFile();
-                        movieList.DisplayMovies();
+                        var searchResults = new SearchResultsService();
+
+                        Console.WriteLine("What title do you want to search?:");
+                        var searchString = Console.ReadLine();
+                        Console.WriteLine("Media results are:");
+                        Console.WriteLine(searchResults.SearchAllMedia(searchString).ToString());
+
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
-
+                }
+                
                 if (userChoice == "2")
+                {
+                    MovieList movieList = new MovieList();
+                    movieList.DisplayMovies();
+
+                }
+
+                if (userChoice == "3")
                 {
                     Showlist showlist = new Showlist();
                     showlist.ReadShowFromFile();
@@ -70,7 +86,7 @@ namespace MovieLibraryAssignment
 
                 }
 
-                else if (userChoice == "3")
+                else if (userChoice == "4")
                 {
                     Videolist videolist = new Videolist();
                     videolist.ReadVideoFromFile();
@@ -78,7 +94,7 @@ namespace MovieLibraryAssignment
 
                 }
 
-            } while (userChoice == "1" || userChoice == "2" || userChoice == "3");
+            } while (userChoice == "1" || userChoice == "2" || userChoice == "3" || userChoice == "4");
 
             _logger.LogInformation("Program was closed down.");
         }

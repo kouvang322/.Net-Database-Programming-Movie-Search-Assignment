@@ -17,5 +17,10 @@ namespace MovieLibraryAssignment
            Console.WriteLine($"ID: {ID}, Title: {Title}, Genre(s): {string.Join(", ", Genres)}");
            
         }
+
+        public override string ToString()
+        {
+            return $"{Title}";
+        }
     }
 }

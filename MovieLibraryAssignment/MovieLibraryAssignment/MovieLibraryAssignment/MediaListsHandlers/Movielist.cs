@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieLibraryAssignment.MediaListsHandlers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace MovieLibraryAssignment
 {
-    public class Movielist
+    public class MovieList : IRepository
     {
         List<Movie> movies = new List<Movie>();
-
+        public MovieList()
+        {
+            ReadMovieFromFile();
+        }
 
         public void ReadMovieFromFile()
         {
@@ -21,7 +25,6 @@ namespace MovieLibraryAssignment
             if (File.Exists(file))
             {
                 // read data from file
-
                 try
                 {
                     while (!fileReader.EndOfStream)
@@ -73,8 +76,6 @@ namespace MovieLibraryAssignment
             {
                 Console.WriteLine("File does not exist");
             }
-
-
         }
 
         public void DisplayMovies()
@@ -82,9 +83,18 @@ namespace MovieLibraryAssignment
             foreach (var movie in movies)
             {
                 movie.Display();
-
             }
         }
 
+        public List<Media> Get()
+        {
+            return new List<Media>(movies);
+        }
+
+        public Media Search(string searchString)
+        {
+            var results = movies.Where(x => x.Title.Contains(searchString));
+            return results.FirstOrDefault();
+        }
     }
 }

@@ -69,7 +69,6 @@ namespace MovieLibraryAssignment
             foreach (var show in shows)
             {
                 show.Display();
-
             }
         }
     }

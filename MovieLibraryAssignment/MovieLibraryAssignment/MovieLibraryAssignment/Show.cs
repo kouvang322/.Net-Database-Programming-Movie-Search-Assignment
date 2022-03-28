@@ -16,5 +16,10 @@ namespace MovieLibraryAssignment
         {
             Console.WriteLine($"ID: {ID}, Title: {Title}, Season: {Season}, Episode: {Episode}, Writer(s): {string.Join(", ", Writers)}");
         }
+
+        public override string ToString()
+        {
+            return $"{Title}";
+        }
     }
 }

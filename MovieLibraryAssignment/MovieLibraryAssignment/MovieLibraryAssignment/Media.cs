@@ -10,7 +10,6 @@ namespace MovieLibraryAssignment
     {
         public int ID { get; set; }
         public string Title { get; set; }
-
         public abstract void Display();
     }
 }

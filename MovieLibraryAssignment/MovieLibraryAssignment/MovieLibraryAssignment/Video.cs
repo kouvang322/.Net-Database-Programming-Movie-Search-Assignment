@@ -16,5 +16,10 @@ namespace MovieLibraryAssignment
         {
             Console.WriteLine($"ID: {ID}, Title: {Title}, Format: {Format}, Length: {Length}, Region(s): {string.Join(", ", Regions)}");
         }
+
+        public override string ToString()
+        {
+            return $"{Title}";
+        }
     }
 }

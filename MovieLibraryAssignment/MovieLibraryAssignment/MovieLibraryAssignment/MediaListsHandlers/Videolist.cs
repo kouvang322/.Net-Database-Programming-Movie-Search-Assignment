@@ -69,9 +69,9 @@ namespace MovieLibraryAssignment
             foreach (var video in videos)
             {
                 video.Display();
-
             }
         }
+
     }
 
 }
