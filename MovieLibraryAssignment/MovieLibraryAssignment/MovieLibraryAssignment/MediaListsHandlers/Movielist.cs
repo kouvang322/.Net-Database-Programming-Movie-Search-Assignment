@@ -1,10 +1,12 @@
 ﻿using MovieLibraryAssignment.MediaListsHandlers;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace MovieLibraryAssignment
 {
@@ -18,6 +20,7 @@ namespace MovieLibraryAssignment
 
         public void ReadMovieFromFile()
         {
+
             string file = "MediaTypes\\Movies-small.csv";
             StreamReader fileReader = new StreamReader(file);
             string line = fileReader.ReadLine();
@@ -93,7 +96,8 @@ namespace MovieLibraryAssignment
 
         public Media Search(string searchString)
         {
-            var results = movies.Where(x => x.Title.Contains(searchString));
+            var results = movies.Where(x => x.Title.ToLower().Contains(searchString.ToLower()));
+
             return results.FirstOrDefault();
         }
     }

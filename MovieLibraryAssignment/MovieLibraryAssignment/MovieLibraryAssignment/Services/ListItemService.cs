@@ -22,11 +22,6 @@ namespace MovieLibraryAssignment
             //Read();
         }
 
-        public ListItemService()
-        {
-
-        }
-
         List<UInt64> movieIds = new List<UInt64>();
         List<string> movieTitles = new List<string>();
         List<string> movieGenres = new List<string>();
@@ -34,8 +29,6 @@ namespace MovieLibraryAssignment
 
         // This method displays the options for the user
         // Options lead to other methods 
-
-
         public void DisplayMenu()
         {
             string userChoice;
@@ -61,9 +54,9 @@ namespace MovieLibraryAssignment
 
                         Console.WriteLine("What title do you want to search?:");
                         var searchString = Console.ReadLine();
-                        Console.WriteLine("Media results are:");
-                        Console.WriteLine(searchResults.SearchAllMedia(searchString).ToString());
+                        var results = searchResults.SearchAllMedia(searchString);
 
+                        results.ForEach(Console.WriteLine);
                     }
                     catch (Exception ex)
                     {
@@ -80,7 +73,7 @@ namespace MovieLibraryAssignment
 
                 if (userChoice == "3")
                 {
-                    Showlist showlist = new Showlist();
+                    ShowList showlist = new ShowList();
                     showlist.ReadShowFromFile();
                     showlist.DisplayShows();
 
@@ -88,7 +81,7 @@ namespace MovieLibraryAssignment
 
                 else if (userChoice == "4")
                 {
-                    Videolist videolist = new Videolist();
+                    VideoList videolist = new VideoList();
                     videolist.ReadVideoFromFile();
                     videolist.DisplayVideos();
 
@@ -100,6 +93,8 @@ namespace MovieLibraryAssignment
         }
     }
 }
+
+#region
 //
 //        public void DisplayMenu()
 //        {
@@ -336,3 +331,4 @@ namespace MovieLibraryAssignment
 
 //    }
 //}
+#endregion

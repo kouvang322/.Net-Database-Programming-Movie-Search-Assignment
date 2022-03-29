@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace MovieLibraryAssignment
 {
-    public class Showlist
+    public class ShowList
     {
         List<Show> shows = new List<Show>();
+
+        public ShowList()
+        {
+            ReadShowFromFile();
+        }
 
         public void ReadShowFromFile()
         {
@@ -70,6 +75,17 @@ namespace MovieLibraryAssignment
             {
                 show.Display();
             }
+        }
+
+        public List<Media> Get()
+        {
+            return new List<Media>(shows);
+        }
+
+        public Media Search(string searchString)
+        {
+            var results = shows.Where(x => x.Title.ToLower().Contains(searchString.ToLower()));
+            return results.FirstOrDefault();
         }
     }
 

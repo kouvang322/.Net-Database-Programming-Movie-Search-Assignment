@@ -19,7 +19,9 @@ namespace MovieLibraryAssignment
 
         public override string ToString()
         {
-            return $"{Title}";
+            // Hardcoded the type of Media to the corresponding title
+            // Not the way best way to figure out the type
+            return $"ID: {ID}, Title: {Title}, Type: Show";
         }
     }
 }
